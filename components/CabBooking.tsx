@@ -11,8 +11,22 @@ export default function CabBooking() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          // Displaying coordinates as placeholder for current location
-          setLocationText(`Lat: ${position.coords.latitude.toFixed(4)}, Lon: ${position.coords.longitude.toFixed(4)}`);
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          setLocationText('Finding location name...');
+          
+          fetch(`/api/reverse-geocode?lat=${lat}&lon=${lon}`)
+            .then(res => res.json())
+            .then(data => {
+              if (data && data.display_name) {
+                setLocationText(data.display_name);
+              } else {
+                setLocationText(`Lat: ${lat.toFixed(4)}, Lon: ${lon.toFixed(4)}`);
+              }
+            })
+            .catch(() => {
+              setLocationText(`Lat: ${lat.toFixed(4)}, Lon: ${lon.toFixed(4)}`);
+            });
         },
         (error) => {
           setLocationText('Location access denied');

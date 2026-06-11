@@ -25,8 +25,7 @@ export default function HeroSection() {
         <div className="mb-16">
           <button
             onClick={() => {
-              const chatElement = document.querySelector('[aria-label="Chat Assistant"]');
-              chatElement?.scrollIntoView({ behavior: 'smooth' });
+              alert("Please click the floating AI Chat widget in the bottom right corner of your screen to get instant help!");
             }}
             className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors text-lg"
           >
