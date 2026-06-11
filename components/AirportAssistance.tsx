@@ -15,7 +15,7 @@ export default function AirportAssistance() {
   const [luggageHelper, setLuggageHelper] = useState(false);
   const [loungeAccess, setLoungeAccess] = useState(false);
 
-  const handleBooking = (service, setState) => {
+  const handleBooking = (service: boolean, setState: (val: boolean) => void) => {
     setState(!service);
   };
 

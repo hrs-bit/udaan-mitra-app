@@ -54,7 +54,7 @@ function AirportSearch({
         />
         {showDropdown && value.length > 0 && results.length > 0 && (
           <ul className="absolute z-10 w-full mt-1 bg-card border border-border rounded-lg shadow-lg max-h-60 overflow-y-auto">
-            {results.map((airport) => (
+            {results.map((airport: Airport) => (
               <li
                 key={airport.icao}
                 onClick={() => {
