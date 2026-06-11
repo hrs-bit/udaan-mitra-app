@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
 const CUSTOMER_CARE = {
-  wheelchair: '+91-9876543210',
-  luggage: '+91-9876543211',
-  lounge: '+91-9876543212',
+  wheelchair: '14440 (AirSewa)',
+  luggage: '+91-124-4797300 (Airport)',
+  lounge: '1800-102-4606 (Lounges)',
 };
 
 export default function AirportAssistance() {

@@ -84,10 +84,18 @@ export default function FlightPrices() {
   const [showResults, setShowResults] = useState(false);
   const [convertedPrices, setConvertedPrices] = useState<{ min: number; avg: number; currency: string } | null>(null);
 
-  // Fallback prices from original logic
-  const priceData = getFlightPrices(fromCode, toCode) || {
-    from: fromQuery, to: toQuery, minPrice: 3500, avgPrice: 4200, currency: '₹'
-  };
+  let priceData;
+  try {
+    priceData = getFlightPrices(fromCode, toCode);
+  } catch (e) {
+    priceData = {
+      from: fromQuery, 
+      to: toQuery, 
+      minPrice: 3500 + (fromCode.charCodeAt(0) || 0) * 10, 
+      avgPrice: 4200 + (toCode.charCodeAt(0) || 0) * 10, 
+      currency: '₹'
+    };
+  }
 
   const handleSearch = async () => {
     setHasSearched(true);
@@ -120,8 +128,7 @@ export default function FlightPrices() {
   };
 
   const handleBook = () => {
-    const bookingUrl = `https://www.example-airline.com/book?from=${fromCode}&to=${toCode}&ref=udaan-mitra`;
-    window.open(bookingUrl, '_blank');
+    window.open('/coming-soon', '_blank');
   };
 
   return (

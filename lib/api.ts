@@ -4,11 +4,11 @@ export async function getLiveFlights() {
     const response = await fetch(
       'https://opensky-network.org/api/states/all?lamin=8.0&lomin=68.0&lamax=37.0&lomax=97.0'
     );
-    if (!response.ok) throw new Error('Failed to fetch live flights');
+    if (!response.ok) return [];
     const data = await response.json();
     return data.states || [];
   } catch (error) {
-    console.error('Error fetching live flights:', error);
+    console.warn('Warning fetching live flights:', error);
     return [];
   }
 }
@@ -19,10 +19,10 @@ export async function getWeather(lat: number, lon: number) {
     const response = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
     );
-    if (!response.ok) throw new Error('Failed to fetch weather');
+    if (!response.ok) return null;
     return await response.json();
   } catch (error) {
-    console.error('Error fetching weather:', error);
+    console.warn('Warning fetching weather:', error);
     return null;
   }
 }
@@ -33,10 +33,10 @@ export async function getAirports() {
     const response = await fetch(
       'https://raw.githubusercontent.com/mwgg/Airports/master/airports.json'
     );
-    if (!response.ok) throw new Error('Failed to fetch airports');
+    if (!response.ok) return null;
     return await response.json(); // Returns a dictionary { "ICAO": { ... } }
   } catch (error) {
-    console.error('Error fetching airports:', error);
+    console.warn('Warning fetching airports:', error);
     return null;
   }
 }
@@ -45,7 +45,7 @@ export async function getAirports() {
 export async function getCoordinates(query: string) {
   try {
     const response = await fetch(`/api/geocode?q=${encodeURIComponent(query)}`);
-    if (!response.ok) throw new Error('Failed to fetch coordinates');
+    if (!response.ok) return null;
     const data = await response.json();
     if (data && data.length > 0) {
       return {
@@ -56,7 +56,7 @@ export async function getCoordinates(query: string) {
     }
     return null;
   } catch (error) {
-    console.error('Error geocoding:', error);
+    console.warn('Warning geocoding:', error);
     return null;
   }
 }
@@ -67,11 +67,11 @@ export async function convertCurrency(amount: number, from: string = 'USD', to: 
     const response = await fetch(
       `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`
     );
-    if (!response.ok) throw new Error('Failed to convert currency');
+    if (!response.ok) return null;
     const data = await response.json();
     return data.rates[to];
   } catch (error) {
-    console.error('Error converting currency:', error);
+    console.warn('Warning converting currency:', error);
     return null;
   }
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Send } from 'lucide-react';
 import { detectLanguage, getLanguagePreference } from '@/lib/language';
 import { getResponseByQuery } from '@/lib/knowledgeBase';
 import ChatMessage from './ChatMessage';
@@ -85,7 +84,7 @@ export default function ChatInterface() {
             <h2 className="text-lg font-semibold text-primary">Udaan-Mitra</h2>
             <p className="text-xs text-muted-foreground">Your Flight Assistant</p>
           </div>
-          <LanguageToggle 
+          <LanguageToggle
             currentLanguage={currentLanguage}
             onLanguageChange={setCurrentLanguage}
           />
@@ -102,7 +101,7 @@ export default function ChatInterface() {
               </p>
             </div>
           )}
-          
+
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} />
           ))}
@@ -120,7 +119,7 @@ export default function ChatInterface() {
         </div>
 
         {/* Input */}
-        <ChatInput 
+        <ChatInput
           value={input}
           onChange={setInput}
           onSend={handleSendMessage}
