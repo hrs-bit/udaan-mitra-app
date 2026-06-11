@@ -15,11 +15,13 @@ export default function CabBooking() {
           const lon = position.coords.longitude;
           setLocationText('Finding location name...');
           
-          fetch(`/api/reverse-geocode?lat=${lat}&lon=${lon}`)
+          fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`)
             .then(res => res.json())
             .then(data => {
-              if (data && data.display_name) {
-                setLocationText(data.display_name);
+              if (data && (data.locality || data.city)) {
+                setLocationText(`${data.locality || data.city}, ${data.principalSubdivision}`);
+              } else if (data && data.countryName) {
+                setLocationText(`${data.principalSubdivision}, ${data.countryName}`);
               } else {
                 setLocationText(`Lat: ${lat.toFixed(4)}, Lon: ${lon.toFixed(4)}`);
               }

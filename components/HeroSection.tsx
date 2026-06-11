@@ -25,7 +25,26 @@ export default function HeroSection() {
         <div className="mb-16">
           <button
             onClick={() => {
-              alert("Please click the floating AI Chat widget in the bottom right corner of your screen to get instant help!");
+              // Attempt to programmatically open the Noupe bot widget
+              const iframes = document.querySelectorAll('iframe');
+              if (iframes.length > 0) {
+                // Usually the bot is the last injected iframe
+                const botWidget = iframes[iframes.length - 1];
+                botWidget.contentWindow?.postMessage('open', '*');
+                botWidget.contentWindow?.postMessage('openChat', '*');
+                botWidget.contentWindow?.postMessage('toggle', '*');
+                // Try simulating a click on its container if accessible
+                botWidget.click();
+              }
+              // Fallback: simulate click in the bottom right corner
+              try {
+                const x = window.innerWidth - 40;
+                const y = window.innerHeight - 40;
+                const element = document.elementFromPoint(x, y);
+                if (element) {
+                  element.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+                }
+              } catch (e) {}
             }}
             className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors text-lg"
           >

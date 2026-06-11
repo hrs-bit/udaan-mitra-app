@@ -39,9 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
+      <head>
+        <Script src="https://www.noupe.com/embed/019eb554cc6d79a1b83965afe5722f58c235.js" strategy="beforeInteractive" />
+      </head>
       <body className="font-sans antialiased">
         {children}
-        <Script src="https://www.noupe.com/embed/019eb554cc6d79a1b83965afe5722f58c235.js" strategy="lazyOnload" />
       </body>
     </html>
   )
