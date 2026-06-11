@@ -3,6 +3,7 @@
 import { AlertCircle, CheckCircle2, Clock, FileText, MapPin, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function InfoSection() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -89,8 +90,14 @@ export default function InfoSection() {
   ];
 
   return (
-    <section className="w-full py-12 px-4 bg-primary/5" aria-label="First-Time Flyer Information">
-      <div className="max-w-3xl mx-auto">
+    <section className="w-full min-h-[100dvh] snap-start flex flex-col justify-center py-12 px-4 bg-primary/5" aria-label="First-Time Flyer Information">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="max-w-3xl w-full mx-auto"
+      >
         <div className="flex items-center gap-3 mb-8">
           <AlertCircle className="w-6 h-6 text-primary" />
           <h2 className="text-2xl font-bold text-foreground">
@@ -126,18 +133,27 @@ export default function InfoSection() {
                   </div>
                 </button>
 
-                {isExpanded && (
-                  <div className="px-6 py-4 bg-muted/30 border-t border-border">
-                    <ul className="space-y-3">
-                      {section.items.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-1" />
-                          <span className="text-sm text-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 py-4 bg-muted/30 border-t border-border">
+                        <ul className="space-y-3">
+                          {section.items.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-1" />
+                              <span className="text-sm text-foreground">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
@@ -170,7 +186,7 @@ export default function InfoSection() {
             Website designed by harshit sharma
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

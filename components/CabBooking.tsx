@@ -4,6 +4,7 @@ import { Car, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export default function CabBooking() {
   const router = useRouter();
@@ -46,8 +47,14 @@ export default function CabBooking() {
   };
 
   return (
-    <section className="w-full py-16 px-4 bg-card" aria-label="Cab Booking Service">
-      <div className="max-w-md mx-auto text-center">
+    <section className="w-full min-h-[100dvh] snap-start py-16 px-4 bg-card flex flex-col justify-center" aria-label="Cab Booking Service">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="max-w-md w-full mx-auto text-center"
+      >
         <div className="flex items-center justify-center gap-3 mb-6">
           <Car className="w-8 h-8 text-primary" />
           <h2 className="text-3xl font-bold text-foreground">कैब बुक करें | Book a Cab</h2>
@@ -72,7 +79,7 @@ export default function CabBooking() {
         >
           Book Now / अभी बुक करें
         </Button>
-      </div>
+      </motion.div>
     </section>
   );
 }

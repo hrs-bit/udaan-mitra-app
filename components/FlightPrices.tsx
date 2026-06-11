@@ -7,6 +7,7 @@ import { useAirports, Airport } from '@/lib/useAirports';
 import { convertCurrency } from '@/lib/api';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 // Custom Autocomplete Component
 function AirportSearch({
@@ -134,8 +135,14 @@ export default function FlightPrices() {
   };
 
   return (
-    <section className="w-full py-12 px-4 bg-secondary/30" aria-label="Flight Price Checker">
-      <div className="max-w-3xl mx-auto">
+    <section className="w-full min-h-[100dvh] snap-start flex flex-col justify-center py-12 px-4 bg-secondary/30" aria-label="Flight Price Checker">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="max-w-3xl w-full mx-auto"
+      >
         <div className="flex items-center gap-3 mb-8">
           <Plane className="w-6 h-6 text-primary" />
           <h2 className="text-2xl font-bold text-foreground">उड़ान बुक करें | Book Your Flight</h2>
@@ -211,7 +218,7 @@ export default function FlightPrices() {
             Search any airport worldwide using our live database.
           </p>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 }

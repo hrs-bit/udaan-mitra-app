@@ -3,6 +3,7 @@
 import { Accessibility, Luggage, Sofa } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const CUSTOMER_CARE = {
   wheelchair: '14440 (AirSewa)',
@@ -20,8 +21,14 @@ export default function AirportAssistance() {
   };
 
   return (
-    <section className="w-full py-12 px-4 bg-muted/30" aria-label="Airport Assistance Services">
-      <div className="max-w-3xl mx-auto">
+    <section className="w-full min-h-[100dvh] snap-start flex flex-col justify-center py-12 px-4 bg-muted/30" aria-label="Airport Assistance Services">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="max-w-3xl w-full mx-auto"
+      >
         <h2 className="text-2xl font-bold text-foreground mb-8 text-center">
           विशेष सेवाएँ | Special Assistance
         </h2>
@@ -149,7 +156,7 @@ export default function AirportAssistance() {
             <span className="font-medium">📞 Important:</span> Have your flight number and booking reference ready when calling. Services are available 24/7.
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

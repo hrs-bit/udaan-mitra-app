@@ -1,11 +1,18 @@
 'use client';
 
 import { Plane, Shield, Users, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="w-full min-h-screen bg-gradient-to-b from-primary via-blue-50 to-white flex items-center justify-center px-4 py-20" aria-label="Hero Section">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="w-full min-h-[100dvh] snap-start bg-gradient-to-b from-primary via-blue-50 to-white flex items-center justify-center px-4 py-20 relative overflow-hidden" aria-label="Hero Section">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-3xl mx-auto text-center z-10"
+      >
         {/* Main Heading */}
         <div className="mb-6">
           <div className="text-6xl mb-6">✈️</div>
@@ -106,7 +113,7 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
