@@ -6,6 +6,7 @@ import { getFlightPrices } from '@/lib/flights';
 import { useAirports, Airport } from '@/lib/useAirports';
 import { convertCurrency } from '@/lib/api';
 import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 // Custom Autocomplete Component
 function AirportSearch({
@@ -75,6 +76,7 @@ function AirportSearch({
 }
 
 export default function FlightPrices() {
+  const router = useRouter();
   const [fromQuery, setFromQuery] = useState('Jammu (IXJ)');
   const [toQuery, setToQuery] = useState('Delhi (DEL)');
   const [fromCode, setFromCode] = useState('IXJ');
@@ -128,7 +130,7 @@ export default function FlightPrices() {
   };
 
   const handleBook = () => {
-    window.open('/coming-soon', '_blank');
+    router.push('/coming-soon');
   };
 
   return (

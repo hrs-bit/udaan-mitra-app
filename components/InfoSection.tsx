@@ -167,7 +167,7 @@ export default function InfoSection() {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-muted-foreground">
-            Need more help? Scroll up to book your flight and arrange transportation.
+            Website designed by harshit sharma
           </p>
         </div>
       </div>

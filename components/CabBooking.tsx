@@ -3,8 +3,10 @@
 import { Car, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function CabBooking() {
+  const router = useRouter();
   const [locationText, setLocationText] = useState('Detecting your location...');
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function CabBooking() {
   }, []);
 
   const handleBookNow = () => {
-    window.open('/coming-soon', '_blank');
+    router.push('/coming-soon');
   };
 
   return (
