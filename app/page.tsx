@@ -8,7 +8,7 @@ import InfoSection from '@/components/InfoSection';
 
 export default function Page() {
   return (
-    <main className="w-full h-[100dvh] overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth">
+    <main className="w-full flex flex-col min-h-screen">
       <HeroSection />
       <FlightPrices />
       <CabBooking />

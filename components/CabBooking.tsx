@@ -47,11 +47,11 @@ export default function CabBooking() {
   };
 
   return (
-    <section className="w-full min-h-[100dvh] snap-start py-16 px-4 bg-card flex flex-col justify-center" aria-label="Cab Booking Service">
+    <section className="w-full py-20 px-4 bg-card flex flex-col justify-center" aria-label="Cab Booking Service">
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
         className="max-w-md w-full mx-auto text-center"
       >

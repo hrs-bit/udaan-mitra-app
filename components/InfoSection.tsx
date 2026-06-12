@@ -90,11 +90,11 @@ export default function InfoSection() {
   ];
 
   return (
-    <section className="w-full min-h-[100dvh] snap-start flex flex-col justify-center py-12 px-4 bg-primary/5" aria-label="First-Time Flyer Information">
+    <section className="w-full py-20 px-4 bg-primary/5" aria-label="First-Time Flyer Information">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
         className="max-w-3xl w-full mx-auto"
       >

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="w-full min-h-[100dvh] snap-start bg-gradient-to-b from-primary via-blue-50 to-white flex items-center justify-center px-4 py-20 relative overflow-hidden" aria-label="Hero Section">
+    <section className="w-full min-h-[90vh] bg-gradient-to-b from-primary via-blue-50 to-white flex items-center justify-center px-4 py-20 relative overflow-hidden" aria-label="Hero Section">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
