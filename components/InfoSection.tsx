@@ -98,10 +98,10 @@ export default function InfoSection() {
         transition={{ duration: 0.6 }}
         className="max-w-3xl w-full mx-auto"
       >
-        <div className="flex items-center gap-3 mb-8">
-          <AlertCircle className="w-6 h-6 text-primary" />
-          <h2 className="text-2xl font-bold text-foreground">
-            First Time Flying? | पहली बार उड़ रहे हैं?
+        <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8 text-center">
+          <AlertCircle className="w-8 h-8 text-primary" />
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            First Time Flying? <span className="hidden md:inline">|</span> <span className="block md:inline">पहली बार उड़ रहे हैं?</span>
           </h2>
         </div>
 
