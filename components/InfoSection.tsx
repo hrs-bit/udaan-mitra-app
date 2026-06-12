@@ -90,7 +90,7 @@ export default function InfoSection() {
   ];
 
   return (
-    <section className="w-full py-20 px-4 bg-primary/5" aria-label="First-Time Flyer Information">
+    <section id="first-time-flyer" className="w-full py-20 px-4 bg-primary/5" aria-label="First-Time Flyer Information">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

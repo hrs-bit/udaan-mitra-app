@@ -28,8 +28,8 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* CTA Button */}
-        <div className="mb-16">
+        {/* CTA Buttons */}
+        <div className="mb-16 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => {
               // Attempt to programmatically open the Noupe bot widget
@@ -53,10 +53,20 @@ export default function HeroSection() {
                 }
               } catch (e) {}
             }}
-            className="inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors text-lg"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors text-lg w-full sm:w-auto"
           >
             अपने सवाल पूछें / Ask Now
             <Plane className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={() => {
+              document.getElementById('first-time-flyer')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/50 px-8 py-3 rounded-lg font-semibold transition-colors text-lg w-full sm:w-auto"
+          >
+            पहली बार उड़ान / First Time Flyer
+            <Shield className="w-5 h-5" />
           </button>
         </div>
 
